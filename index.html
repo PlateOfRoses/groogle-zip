@@ -1,7 +1,7 @@
 <html lang="en">
 <script src="scripts/twab_search.js"></script>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="top-bar">
-        <a>About</a>
         <div style="width:100%;">
             <a id="total-twabs">Twabs Loaded: {Total_Twabs}</a>
+            <a> | </a>
             <a id="recent" style="align-items: end;">Recent: {Recent}</a>
         </div>
     </div>
@@ -29,9 +29,14 @@
         </div>
     </div>
 
-    <div class="under-search">
-        <div>
-            <button id="unlucky">I'm Feeling Lucky</button>
+    <div class="results-container">
+        <div class="info-container">
+            <div class="information" id="info">
+    
+            </div>
+            <div class="results" id="results">
+    
+            </div>
         </div>
     </div>
 
