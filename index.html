@@ -1,45 +1,33 @@
 <html lang="en">
-<script src="scripts/twab_search.js"></script>
+<script src="scripts/index_script.js"></script>
 <head>
-    <link rel="stylesheet" href="styles/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="groogle.png">
-    <title>Twab Search V2</title>
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="icon" type="image/png" href="resources/groogle.png">
+    <title>Groogle</title>
 </head>
 <body>
-    <div class="top-bar">
-        <div style="width:100%;">
-            <a id="total-twabs">Twabs Loaded: {Total_Twabs}</a>
-            <a> | </a>
-            <a id="recent" style="align-items: end;">Recent: {Recent}</a>
-        </div>
-    </div>
-
     <div class="groogle-text">
-        <div class="bottom-text">
-            <a>Twab Search</a>
-        </div>
+        <a>Groogle</a>
     </div>
-
-    <div class="search-box">
-        <div class="search-bar">
-            <input id="search" autocomplete="off">
-        </div>
-    </div>
-
-    <div class="results-container">
-        <div class="info-container">
-            <div class="information" id="info">
-    
+    <div id="cards">
+        <a href="twab_search.html">
+            <div class="card">
+                <img id="twab" src="https://imguscdn.gamespress.com/cdn/files/Bungie/2023/03/011828-3d865619/2023_Season_of_Defiance_PressKit_HELM_Compressed_004.jpg?otf=y&lightbox=y&ex=2023-08-01+03%3A00%3A00&sky=dd87dc3067de3e68e0d57fbb68a290045a2cf5c8af828b2eaa7be5d704857ea9&w=1024&maxheight=4096&mode=pad&format=jpg">
+                <span class="title">Twab Search</span>
+                <span class="content">Destiny 2 Twabs and Hotfix Search Tool</span>
             </div>
-            <div class="results" id="results">
-    
+        </a>
+        <a>
+            <div class="wipcard">
+                <img id="unknown" src="https://imguscdn.gamespress.com/cdn/files/Bungie/2023/01/160932-2722d768/2023_Lightfall_Launch_PressKit_Neomuna_Compressed_002.jpg?otf=y&lightbox=y&ex=2023-08-01+03%3A00%3A00&sky=ce6c848540546cb77561f2a69ad3b4aae1219080442087c4727d254037bf2c3b&w=1024&maxheight=4096&mode=pad&format=jpg">
+                <span class="title">?</span>
+                <span class="content">Future Content In Development</span>
             </div>
-        </div>
+        </a>
     </div>
-
     <div class="footer">
         <a>Created by BowlOfLoki#0955</a>
     </div>

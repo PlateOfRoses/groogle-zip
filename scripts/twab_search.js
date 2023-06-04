@@ -1,5 +1,6 @@
 var input = document.addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
+        window.scrollTo({top: 0, behavior: 'smooth'});
         if (!entries) {
             return false;
         }
@@ -46,11 +47,11 @@ var input = document.addEventListener("keypress", function(e) {
     
                         internal += test2.innerHTML;
                     }
-                    const temp_html = "<div><h2><a href='https://bungie.net" + entries[id].link + "'>" + entries[id].title + "</a> - " + response[id].length + " Appearance(s)</h2>" + internal + "</div>";
+                    const temp_html = "<div class='result'><h2><a href='https://bungie.net" + entries[id].link + "'>" + entries[id].title + "</a> - " + response[id].length + " Appearance(s)</h2>" + internal + "</div>";
                     res_html += temp_html;
                     if (!(first < entries[id].date)) {
                         first = entries[id].date;
-                        first_id = id;
+                        first_id = id; 
                     }
                     if (last  < entries[id].date) {
                         last = entries[id].date;
