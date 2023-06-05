@@ -60,8 +60,6 @@ body {
     display: none;
 }
 
-
-
 .title {
     color: white;
     opacity: 200;
@@ -69,6 +67,7 @@ body {
     font-size: 40px;
     pointer-events: none;
     z-index: 1;
+    animation: 1s anim-reverse ease-out forwards;
 }
 
 .card:hover .title {
@@ -80,13 +79,27 @@ body {
     0% {
         transform: translateY(0%);
     }
-    50% {
+    25% {
         transform: translateY(-55%);
         font-size: 50px;
     }
     100% {
         transform: translateY(-55%);
         font-size: 50px;
+    }
+}
+
+@keyframes anim-reverse {
+    0% {
+        transform: translateY(-55%);
+        font-size: 50px;
+    }
+    50% {
+        transform: translateY(0%);
+        font-size: 40px;
+    }
+    100% {
+        transform: translateY(0%);
     }
 }
 
@@ -98,21 +111,37 @@ body {
     opacity: 0;
     pointer-events: none;
     z-index: 1;
+    animation: 0.75s anim-revcont ease-out forwards;
 }
 
 .card:hover .content {
-    animation: 1s anim-content forwards;
+    animation: 1s anim-content ease-out forwards;
 }
 
 @keyframes anim-content {
     20% {
         opacity: 0;
+        translate: translateX(-30%);
     }
     60% {
         opacity: 1;
+        translate: translateX(0%)
     }
     100% {
         opacity: 1;
+        translate: translateX(0%);
+    }
+}
+
+@keyframes anim-revcont {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
     }
 }
 

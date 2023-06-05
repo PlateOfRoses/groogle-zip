@@ -1,10 +1,11 @@
 body {
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden;
     background-color: #30333a;
     font-family: arial,sans-serif;
     scrollbar-width: 0px;
     -ms-overflow-style: none;
-    
 }   
 
 body::-webkit-scrollbar {
@@ -26,14 +27,18 @@ body::-webkit-scrollbar {
 }
 
 .groogle-text {
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
     font-size: 100px;
     color: white;
-    align-items: center;
+    align-items: end;
     height: 25%;
     text-shadow: 0 0 5px #fff;
     cursor: default;
+    text-align: center;
+    justify-content: center;
+    word-wrap: break-word;
+    height: calc(100px * 2 + 5%);
 }
 
 .bottom-text {
@@ -75,9 +80,6 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
 }
     
 
@@ -94,6 +96,7 @@ body::-webkit-scrollbar {
     font-size: 20px;
     color: white;
     align-items: center;
+    min-width: 400px;
 
 }
 
@@ -113,6 +116,7 @@ body::-webkit-scrollbar {
     height: 35px;
     font-size: 20px;
     color: white;
+    margin-left: 55px;
 }
 
 .results {
@@ -174,4 +178,11 @@ a:visited {
 
 .totop:hover {
     background-color: #2b2d33;
+}
+
+#search-symbol {
+    position: absolute;
+    height: 35px;
+    cursor: pointer;
+    padding: 10 10 10 0px;
 }

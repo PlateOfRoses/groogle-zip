@@ -1,78 +1,15 @@
 var input = document.addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
-        window.scrollTo({top: 0, behavior: 'smooth'});
         if (!entries) {
             return false;
         }
-        const keyword = document.getElementById("search");
-        if (keyword.value.length <= 0) {
-            return false;
-        }
-        const result = document.getElementById("results");
-        result.innerHTML = "";
-        const information = document.getElementById("info");
-        information.innerHTML = "";
+        
         /*
-         Get the twabs here ig - too tired to do now maybe probably shit code
-         shitty fucking regex that took me too long to figure out gets 
-         between <ul> and </ul> or <div> and </div> whichever is shorter
+        Get the twabs here ig - too tired to do now maybe probably shit code
+        shitty fucking regex that took me too long to figure out gets 
+        between <ul> and </ul> or <div> and </div> whichever is shorter
         */
-        get_hits(entries, keyword.value).then( function (response) {
-            if (Object.keys(response).length <= 0) {
-                return false;
-            }
-            console.log(response);
-            let total = 0;
-            let first_id;
-            let first;
-            let last_id;
-            let last = 0;
-            let most_id;
-            let most = 0;
-            let res_html = "";
-            for (let i in Object.keys(response)) {
-                const id = Object.keys(response)[i];
-                let internal = "";
-                if (response[id].length != 0) {
-                    for (let i in Object.keys(response[id])) {
-                        var test = response[id][i];
-                        var re_phrase = new RegExp(keyword.value, "ig")
-                        const inthtml = test.replace(re_phrase, "<b class='highlight'>" + keyword.value.toUpperCase() + "</b>");
-                        const parser = new DOMParser();
-                        const html = parser.parseFromString(inthtml, "text/html");
-    
-                        const test2 = document.createElement("div");
-                        test2.append(html.body);
-                        console.log(test2.innerHTML);
-    
-                        internal += test2.innerHTML;
-                    }
-                    const temp_html = "<div class='result'><h2><a href='https://bungie.net" + entries[id].link + "'>" + entries[id].title + "</a> - " + response[id].length + " Appearance(s)</h2>" + internal + "</div>";
-                    res_html += temp_html;
-                    if (!(first < entries[id].date)) {
-                        first = entries[id].date;
-                        first_id = id; 
-                    }
-                    if (last  < entries[id].date) {
-                        last = entries[id].date;
-                        last_id = id;
-                    }
-                    if (most < response[id].length) {
-                        most_id = id;
-                        most = response[id].length
-                    }
-                    total += response[id].length
-                }
-            }
-            const result = document.getElementById("results");
-            result.innerHTML = res_html;
-            const information = document.getElementById("info");
-            information.innerHTML = "<h1>" + keyword.value + 
-            "</h1><p> Unique Appearances: " + Object.keys(response).length + "<br>Total Appearances: " + total +  "</p>" + 
-            "<p><b>First Appearance:</b> " + get_time(first) + "<br><a href='https://bungie.net" + entries[first_id].link + "'>" + entries[first_id].title + 
-            "</a></p><p><b>Recent Appearance:</b> " + get_time(last) + "<br><a href='https://bungie.net" + entries[last_id].link + "'>" + entries[last_id].title + 
-            "</a></p><p><b>Most Appearances:</b> " + most + "<br><a href='https://bungie.net" + entries[most_id].link + "'>" + entries[most_id].title;
-        });
+        load_search();
         }
     }
 )
@@ -132,7 +69,73 @@ async function onload() {
 let entries;
 onload();
 
+async function load_search() {
+    const keyword = document.getElementById("search");
+    if (keyword.value.length <= 0) {
+        return false;
+    }
+    const result = document.getElementById("results");
+    result.innerHTML = "";
+    const information = document.getElementById("info");
+    information.innerHTML = "";
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    get_hits(entries, keyword.value).then( function (response) {
+        if (Object.keys(response).length <= 0) {
+            return false;
+        }
+        console.log(response);
+        let total = 0;
+        let first_id;
+        let first;
+        let last_id;
+        let last = 0;
+        let most_id;
+        let most = 0;
+        let res_html = "";
+        for (let i in Object.keys(response)) {
+            const id = Object.keys(response)[i];
+            let internal = "";
+            if (response[id].length != 0) {
+                for (let i in Object.keys(response[id])) {
+                    var test = response[id][i];
+                    var re_phrase = new RegExp(keyword.value, "ig")
+                    const inthtml = test.replace(re_phrase, "<b class='highlight'>" + keyword.value.toUpperCase() + "</b>");
+                    const parser = new DOMParser();
+                    const html = parser.parseFromString(inthtml, "text/html");
 
+                    const test2 = document.createElement("div");
+                    test2.append(html.body);
+                    console.log(test2.innerHTML);
+
+                    internal += test2.innerHTML;
+                }
+                const temp_html = "<div class='result'><h2><a href='https://bungie.net" + entries[id].link + "'>" + entries[id].title + "</a> - " + response[id].length + " Appearance(s)</h2>" + internal + "</div>";
+                res_html += temp_html;
+                if (!(first < entries[id].date)) {
+                    first = entries[id].date;
+                    first_id = id; 
+                }
+                if (last  < entries[id].date) {
+                    last = entries[id].date;
+                    last_id = id;
+                }
+                if (most < response[id].length) {
+                    most_id = id;
+                    most = response[id].length
+                }
+                total += response[id].length
+            }
+        }
+        const result = document.getElementById("results");
+        result.innerHTML = res_html;
+        const information = document.getElementById("info");
+        information.innerHTML = "<h1>" + keyword.value + 
+        "</h1><p> Unique Appearances: " + Object.keys(response).length + "<br>Total Appearances: " + total +  "</p>" + 
+        "<p><b>First Appearance:</b> " + get_time(first) + "<br><a href='https://bungie.net" + entries[first_id].link + "'>" + entries[first_id].title + 
+        "</a></p><p><b>Recent Appearance:</b> " + get_time(last) + "<br><a href='https://bungie.net" + entries[last_id].link + "'>" + entries[last_id].title + 
+        "</a></p><p><b>Most Appearances:</b> " + most + "<br><a href='https://bungie.net" + entries[most_id].link + "'>" + entries[most_id].title;
+    });
+}
 
 
 async function get_twabs() {
