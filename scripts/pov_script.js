@@ -24,7 +24,7 @@ async function addthings(v, k, dropdown, filter, type) {
     let filt = document.createElement('option');
     filt.value = v;
     filt.id =  type + "_" + v;
-    filt.innerHTML = v + " (" + filter[v].length + ")";
+    filt.innerHTML = (v == " " ? "ALL": v) + " (" + filter[v].length + ")";
     dropdown.appendChild(filt, "player");
 }
 
@@ -119,7 +119,7 @@ async function hide_miscreants(event) {
         for (let fl in Object.keys(filters[i])) {
             if (filters[i].id != event.target.id || event.target.value == filters[i][fl].value) {
                 let b = get_with(filters[i].id, filters[i][fl].value);
-                filters[i][fl].innerHTML = filters[i][fl].value + " (" + b.length + ")";
+                filters[i][fl].innerHTML = (filters[i][fl].value == " " ? "ALL": filters[i][fl].value) + " (" + b.length + ")";
                 if (b.length == 0) {
                     filters[i][fl].style.display = 'none';
                 } else {
