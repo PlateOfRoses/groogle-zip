@@ -199,28 +199,28 @@ async function add_video(id, video) {
     div.id = id;
     div.className = 'result';
     const date = new Date(video.publishedAt*1000);
-    let inner = "<div class='testabc'><div><a href='https://youtu.be/" + video.id + "'><img class='resultimage' src='" + video.thumbnail.url + "' loading='lazy' ></a></div>" +
-                "<div class='testbca' ><a href='https://youtu.be/" + video.id + "'><h3 class='videotitle'>" + video.title +"</h3></a>" +
-                "<div style='display:flex;'>" +
-                "<h4 style='margin:0px 30px 10px 10px;'><i>" + video.team + "</i> " + video.player + " vs " + video.enemy + "</h4>" +
-                "<h4 style='width:20%;margin:0px 0px 10px 10px;'>" + video.tournament + "</h4>" +
-                (video.stakes == "None" ? "" : "<h4 style='width:20%;margin:0px 0px 10px 10px;'>" + video.stakes + "</h4>") +
-                "<h4 style='width:20%;margin:0px 0px 10px 10px;flex:max-content;text-align:end;'> Uploaded: " + days[date.getDay()] + " " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + " " + (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) + ":" + (date.getSeconds() < 10 ? "0": "" ) + date.getSeconds() + (date.getHours() > 12 ? "pm" : "am") + "</h4>" +
-                "</div><div style='display:flex;font-size:larger;flex-wrap:wrap;margin-left: 8px;'>";
+    let inner = "<div class='resultflex' loading='lazy'><div class='painbox'><a href='https://youtu.be/" + video.id + "'><img class='resultimage' src='" + video.thumbnail.url + "' loading='lazy' ></a></div>" +
+                "<div class='videoinfo' ><a href='https://youtu.be/" + video.id + "'><h3 class='videotitle'>" + video.title +"</h3></a>" +
+                "<div class='videostats'>" +
+                "<h4 class='matchinfo'><i>" + video.team + "</i> " + video.player + " vs " + video.enemy + "</h4>" +
+                "<h4 class='tourn'>" + video.tournament + "</h4>" +
+                (video.stakes == "None" ? "" : "<h4 class='tourn'>" + video.stakes + "</h4>") +
+                "<h4 class='uploaded'> Uploaded: " + days[date.getDay()] + " " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + " " + (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) + ":" + (date.getSeconds() < 10 ? "0": "" ) + date.getSeconds() + (date.getHours() > 12 ? "pm" : "am") + "</h4>" +
+                "</div><div class='herocontainer'>";
 
 
     for (let hero in Object.keys(video.heroes)) {
-        inner += "<div class='herocard' onclick='onheroclick(this)'><div style='position: absolute;width: 100%;height: 100%;' id='" + video.heroes[hero] + "'></div><img src='" + hero_icons[video.heroes[hero]] + "' style='width:40px;padding-right: 10px;overflow: hidden;border-radius: 10px;'>" + video.heroes[hero] +
-                "</div>"
+        inner += "<div class='herocard' onclick='onheroclick(this)'><div class='heroclickable' id='" + video.heroes[hero] + "'></div><img src='" + hero_icons[video.heroes[hero]] + "' class='heroimage'><a>" + video.heroes[hero] +
+                "</a></div>"
     }
 
-    inner += "</div><br><div style='display:flex;font-size:larger;flex-wrap:wrap;margin-left: 8px;'>"
+    inner += "</div><br><div class='mapcontainer'>"
 
     for (let hero in Object.keys(video.maps)) {
-        inner += "<div class='mapholder'><div class='maptext'>" + video.maps[hero] + "</div><div class='mapcard'></div></div>"
+        inner += "<div class='mapholder'><div class='maptext'><a>" + video.maps[hero] + "</a></div><div class='mapcard'></div></div>"
     }
 
-    inner += "</div></div></div>";
+    inner += "</div></div><div class='resultbackground'></div></div>";
 
     div.innerHTML = inner;
     container.appendChild(div)
