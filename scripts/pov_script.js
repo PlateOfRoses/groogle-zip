@@ -20,61 +20,62 @@ async function get_povs() {
 	});
 }
 
-async function addthings(v, k, dropdown, filter) {
+async function addthings(v, k, dropdown, filter, type) {
     let filt = document.createElement('option');
     filt.value = v;
+    filt.id =  type + "_" + v;
     filt.innerHTML = v + " (" + filter[v].length + ")";
-    dropdown.appendChild(filt);
+    dropdown.appendChild(filt, "player");
 }
 
 
 async function populate_filters() {
     player_dropdown = document.getElementById("playerselect");
     Object.keys(entries.filters.player).sort().forEach(function(k,v) {
-        addthings(k, v, player_dropdown, entries.filters.player);
+        addthings(k, v, player_dropdown, entries.filters.player, "player");
     })
     player_dropdown.onchange = function(e){hide_miscreants(e);}
 
 
     hero_dropdown = document.getElementById("heroselect");
     Object.keys(entries.filters.heroes).sort().forEach(function(k, v) {
-        addthings(k, v, hero_dropdown, entries.filters.heroes);
+        addthings(k, v, hero_dropdown, entries.filters.heroes, "hero");
     })
     hero_dropdown.onchange = function(e){hide_miscreants(e);}
 
     region_dropdown = document.getElementById("regionselect");
     Object.keys(entries.filters.region).sort().forEach(function(k, v) {
-        addthings(k, v, region_dropdown, entries.filters.region);
+        addthings(k, v, region_dropdown, entries.filters.region, "region");
     })
     region_dropdown.onchange = function(e){hide_miscreants(e);}
 
     stakes_dropdown = document.getElementById("stakesselect");
     Object.keys(entries.filters.stakes).sort().forEach(function(k, v) {
-        addthings(k, v, stakes_dropdown, entries.filters.stakes);
+        addthings(k, v, stakes_dropdown, entries.filters.stakes, "stakes");
     })
     stakes_dropdown.onchange = function(e){hide_miscreants(e);}
 
     team_dropdown = document.getElementById("teamselect");
     Object.keys(entries.filters.team).sort().forEach(function(k, v) {
-        addthings(k, v, team_dropdown, entries.filters.team);
+        addthings(k, v, team_dropdown, entries.filters.team, "team");
     })
     team_dropdown.onchange = function(e){hide_miscreants(e);}
 
     enemy_dropdown = document.getElementById("enemyselect");
     Object.keys(entries.filters.enemy).sort().forEach(function(k, v) {
-        addthings(k, v, enemy_dropdown, entries.filters.enemy);
+        addthings(k, v, enemy_dropdown, entries.filters.enemy, "enemy");
     })
     enemy_dropdown.onchange = function(e){hide_miscreants(e);}
 
     tourn_dropdown = document.getElementById("tournselect");
     Object.keys(entries.filters.tournament).sort().forEach(function(k, v) {
-        addthings(k, v, tourn_dropdown, entries.filters.tournament);
+        addthings(k, v, tourn_dropdown, entries.filters.tournament, "tourn");
     })
     tourn_dropdown.onchange = function(e){hide_miscreants(e);}
 
     maps_dropdown = document.getElementById("mapsselect");
     Object.keys(entries.filters.maps).sort().forEach(function(k, v) {
-        addthings(k, v, maps_dropdown, entries.filters.maps);
+        addthings(k, v, maps_dropdown, entries.filters.maps, "maps");
     })
     maps_dropdown.onchange = function(e){hide_miscreants(e);}
 }
@@ -209,7 +210,7 @@ async function add_video(id, video) {
 
 
     for (let hero in Object.keys(video.heroes)) {
-        inner += "<div class='herocard'><img src='" + hero_icons[video.heroes[hero]] + "' style='width:40px;padding-right: 10px;overflow: hidden;border-radius: 10px;'>" + video.heroes[hero] +
+        inner += "<div class='herocard' onclick='onheroclick(this)'><div style='position: absolute;width: 100%;height: 100%;' id='" + video.heroes[hero] + "'></div><img src='" + hero_icons[video.heroes[hero]] + "' style='width:40px;padding-right: 10px;overflow: hidden;border-radius: 10px;'>" + video.heroes[hero] +
                 "</div>"
     }
 
@@ -223,6 +224,12 @@ async function add_video(id, video) {
 
     div.innerHTML = inner;
     container.appendChild(div)
+}
+
+async function onheroclick(e) {
+    document.getElementById("heroselect").value = e.childNodes[0].id;
+    a = document.getElementById('hero_' + e.childNodes[0].id)
+    hide_miscreants({target: a});
 }
 
 function apiRequest(url) {
