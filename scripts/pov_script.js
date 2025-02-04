@@ -20,79 +20,62 @@ async function get_povs() {
 	});
 }
 
+async function addthings(v, k, dropdown, filter) {
+    let filt = document.createElement('option');
+    filt.value = v;
+    filt.innerHTML = v + " (" + filter[v].length + ")";
+    dropdown.appendChild(filt);
+}
+
 
 async function populate_filters() {
     player_dropdown = document.getElementById("playerselect");
-    for (const [k, v] of Object.entries(entries.filters.player)) {
-        let filt = document.createElement('option');
-        filt.value = k;
-        filt.innerHTML = k + " (" + v.length + ")";
-        player_dropdown.appendChild(filt);
-    }
+    Object.keys(entries.filters.player).sort().forEach(function(k,v) {
+        addthings(k, v, player_dropdown, entries.filters.player);
+    })
     player_dropdown.onchange = function(e){hide_miscreants(e);}
 
 
     hero_dropdown = document.getElementById("heroselect");
-    for (const [k, v] of Object.entries(entries.filters.heroes)) {
-        let filt = document.createElement('option');
-        filt.value = k;
-        filt.innerHTML = k + " (" + v.length + ")";
-        hero_dropdown.appendChild(filt);
-    }
+    Object.keys(entries.filters.heroes).sort().forEach(function(k, v) {
+        addthings(k, v, hero_dropdown, entries.filters.heroes);
+    })
     hero_dropdown.onchange = function(e){hide_miscreants(e);}
 
     region_dropdown = document.getElementById("regionselect");
-    for (const [k, v] of Object.entries(entries.filters.region)) {
-        let filt = document.createElement('option');
-        filt.value = k;
-        filt.innerHTML = k + " (" + v.length + ")";
-        region_dropdown.appendChild(filt);
-    }
+    Object.keys(entries.filters.region).sort().forEach(function(k, v) {
+        addthings(k, v, region_dropdown, entries.filters.region);
+    })
     region_dropdown.onchange = function(e){hide_miscreants(e);}
 
     stakes_dropdown = document.getElementById("stakesselect");
-    for (const [k, v] of Object.entries(entries.filters.stakes)) {
-        let filt = document.createElement('option');
-        filt.value = k;
-        filt.innerHTML = k + " (" + v.length + ")";
-        stakes_dropdown.appendChild(filt);
-    }
+    Object.keys(entries.filters.stakes).sort().forEach(function(k, v) {
+        addthings(k, v, stakes_dropdown, entries.filters.stakes);
+    })
     stakes_dropdown.onchange = function(e){hide_miscreants(e);}
 
     team_dropdown = document.getElementById("teamselect");
-    for (const [k, v] of Object.entries(entries.filters.team)) {
-        let filt = document.createElement('option');
-        filt.value = k;
-        filt.innerHTML = k + " (" + v.length + ")";
-        team_dropdown.appendChild(filt);
-    }
+    Object.keys(entries.filters.team).sort().forEach(function(k, v) {
+        addthings(k, v, team_dropdown, entries.filters.team);
+    })
     team_dropdown.onchange = function(e){hide_miscreants(e);}
 
     enemy_dropdown = document.getElementById("enemyselect");
-    for (const [k, v] of Object.entries(entries.filters.enemy)) {
-        let filt = document.createElement('option');
-        filt.value = k;
-        filt.innerHTML = k + " (" + v.length + ")";
-        enemy_dropdown.appendChild(filt);
-    }
+    Object.keys(entries.filters.enemy).sort().forEach(function(k, v) {
+        addthings(k, v, enemy_dropdown, entries.filters.enemy);
+    })
     enemy_dropdown.onchange = function(e){hide_miscreants(e);}
 
     tourn_dropdown = document.getElementById("tournselect");
-    for (const [k, v] of Object.entries(entries.filters.tournament)) {
-        let filt = document.createElement('option');
-        filt.value = k;
-        filt.innerHTML = k + " (" + v.length + ")";
-        tourn_dropdown.appendChild(filt);
-    }
+    Object.keys(entries.filters.tournament).sort().forEach(function(k, v) {
+        addthings(k, v, tourn_dropdown, entries.filters.tournament);
+    })
     tourn_dropdown.onchange = function(e){hide_miscreants(e);}
 
     maps_dropdown = document.getElementById("mapsselect");
-    for (const [k, v] of Object.entries(entries.filters.maps)) {
-        let filt = document.createElement('option');
-        filt.value = k;
-        filt.innerHTML = k + " (" + v.length + ")";
-        maps_dropdown.appendChild(filt);
-    }
+    Object.keys(entries.filters.maps).sort().forEach(function(k, v) {
+        addthings(k, v, maps_dropdown, entries.filters.maps);
+    })
     maps_dropdown.onchange = function(e){hide_miscreants(e);}
 }
 
