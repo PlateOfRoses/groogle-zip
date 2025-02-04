@@ -170,7 +170,7 @@ async function display_twabs(response, keyword) {
 }
 
 
-function apiRequest(url) {
+    function apiRequest(url) {
 	let request = new XMLHttpRequest();
 	request.open("GET", url, true);
 	return new Promise(function(resolve, reject) {

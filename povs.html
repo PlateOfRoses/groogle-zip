@@ -1,0 +1,81 @@
+<html lang="en">
+<script async src="https://fundingchoicesmessages.google.com/i/pub-7467004386597269?ers=1" nonce="VeIMIVQrRSP5GvLDdyIzcw"></script>
+<script nonce="VeIMIVQrRSP5GvLDdyIzcw">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+<script src="scripts/pov_script.js"></script>
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7467004386597269"
+     crossorigin="anonymous"></script>
+    <meta name="description" content="Overwatch Player POV search tool">
+    <meta name="keywords" content="Overwatch, OWCS, Player Pov, POV, Overwatch 2, Proplay">
+    <meta name="author" content="PlateOfSuki">
+    <meta name="google-adsense-account" content="ca-pub-7467004386597269">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/pov_style.css">
+    <link rel="icon" type="image/png" href="resources/groogle.png">
+    <title>OWCS Player POVs</title>
+</head>
+<body>
+    <div class="top-bar">
+        <a id="total-povs">POVs Loaded: {povs}</a>
+        <a class="home" href="/index">Home</a>
+    </div>
+
+    <div class="groogle-text">
+        <span>OWCS Player POVs</span>
+    </div>
+
+    <div class="results-container">
+        <div class="info-container">
+            <div class="information" id="info"><h1>Filters</h1>
+                <div class="filterbox">
+                    <p style="text-align: center; font-size: small;">Currently ~170 videos have no heroes, a fix is coming (hopefully)</p>
+                    <a>Player:</a>
+                    <select id="playerselect" name="player" class="filterselect">
+                    </select>
+                    <br>
+                    <a>Hero:</a>
+                    <select id="heroselect" name="hero" class="filterselect">
+                    </select>
+                    <br>
+                    <a>Region:</a>
+                    <select id="regionselect" name="region" class="filterselect">
+                    </select>
+                    <br>
+                    <a>Stakes:</a>
+                    <select id="stakesselect" name="stakes" class="filterselect">
+                    </select>
+                    <br>
+                    <a>Team:</a>
+                    <select id="teamselect" name="team" class="filterselect">
+                    </select>
+                    <br>
+                    <a>Enemy:</a>
+                    <select id="enemyselect" name="enemy" class="filterselect">
+                    </select>
+                    <br>
+                    <a>Tournament:</a>
+                    <select id="tournselect" name="tourn" class="filterselect">
+                    </select>
+                    <br>
+                    <a>Map:</a>
+                    <select id="mapsselect" name="maps" class="filterselect">
+                    </select>
+                </div>
+            </div>
+            <div class="results" id="results">
+
+            </div>
+        </div>
+    </div>
+    <div class="totop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+        <img src="resources/DoubleChevronUp12.svg" style="height: 40px; width: 40px;"/>
+    </div>
+    <div class="footer">
+        <a>Created by PlateOfSuki</a>
+        <a>   |   </a>
+        <a href="https://www.termsfeed.com/live/10efd1b2-8dfb-4439-9e36-8b095bbdf6f3">Privacy Policy</a>
+    </div>
+</body>
+</html>

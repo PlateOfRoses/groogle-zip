@@ -1,0 +1,278 @@
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: #30333a;
+    font-family: arial,sans-serif;
+    scrollbar-width: 0px;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.top-bar {
+    width: calc(100% - 20px);
+    height: 5%;
+    padding-left: 20px;
+    align-items: center;
+    color: #b3b3b3;
+    font-size: 18;
+}
+
+.home {
+    right: 20px;
+    position: absolute;
+}
+
+.groogle-text {
+    flex-grow: 1;
+    display: flex;
+    font-size: 100px;
+    color: white;
+    align-items: end;
+    height: 25%;
+    text-shadow: 0 0 5px #fff;
+    cursor: default;
+    text-align: center;
+    justify-content: center;
+    word-wrap: break-word;
+    height: calc(100px * 2 + 5%);
+}
+
+.bottom-text {
+    display: flex;
+    align-items: end;
+    position: relative;
+    height: 100%;
+}
+
+.under-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    color: white;
+}
+
+.resultimage {
+    background-image: linear-gradient(to right, #ffffff 0%, #3d3f46 70%);
+    width: 300px;
+    margin-right: 10px;
+    padding: 8px 30px 8px 8px;
+    border-radius: 28px;
+}
+
+
+#unlucky {
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: #5c5f69;
+    color: white;
+    border: 1px hidden #acacac;;
+    height: 36px;
+    cursor: pointer;
+    margin: 11px 14px;
+    padding: 0 16px;
+    user-select: none;
+    text-align: center;
+}
+
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.search-bar {
+    display: flex;
+    top: 0;
+    width: 40%;
+    height: 25px;
+    background-color: #30333a;
+    border-radius: 24px;
+    border: 1px solid #6e6e6e;
+    margin: 16px;
+    padding: 20px;
+    font-size: 20px;
+    color: white;
+    align-items: center;
+    min-width: 400px;
+
+}
+
+.search-bar:hover {
+    background-color: #6e6e6e;
+}
+
+#unlucky:hover {
+    border: 1px solid #acacac;
+}
+
+#search {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 35px;
+    font-size: 20px;
+    color: white;
+    margin-left: 55px;
+}
+
+
+.testabc {
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: start;
+    align-items: flex-start;
+}
+
+.results {
+    width: 65%;
+    background-color: #3d3f46;
+    margin: 30px 17.5%;
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: visible;
+    color: white;
+}
+
+.result {
+    padding: 30px;
+    border: 1px solid #57585c;
+}
+
+.information {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3d3f46;
+    width: 15%;
+    margin: 30px 15px;
+}
+
+.info-container {
+    overflow: auto;
+    width: 100%;
+    display: flex;
+}
+
+.highlight {
+    color: red;
+}
+
+.totop {
+    position: fixed;
+    bottom: 10px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    background-color: #202125;
+}
+
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: rgb(236, 211, 211);
+}
+
+.totop:hover {
+    background-color: #2b2d33;
+}
+
+#search-symbol {
+    position: absolute;
+    height: 35px;
+    cursor: pointer;
+    padding: 10 10 10 0px;
+}
+
+
+.testbca {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.filterbox {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 15;
+}
+
+.videotitle {
+    margin-top: 5px;
+}
+
+.herocard {
+    text-align: center;
+    background: linear-gradient(to right, #7a7575 0%, #2f3031 50%);
+    height: 40px;
+    border-radius: 10px;
+    margin-right: 8px;
+    align-items: center;
+    display: flex;
+    padding-right: 8px;
+    border: 1px solid #6a6767;
+}
+
+.mapcard {
+    text-align: center;
+    height: 40px;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    padding: 0px 8px 0px 8px;
+    background-image: url("../resources/kr.png");
+    filter: blur(2px) contrast(70%) brightness(50%);
+    background-position: center top;
+    min-width: 70px;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 150px;
+}
+
+.maptext {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 166px;
+    align-content: center;
+    text-align: center;
+}
+
+.mapholder {
+    position:relative;
+    flex:auto;
+    max-width:166px;
+    min-width: 166px;
+    margin: 0 10px 10px 0;
+    border: 1px solid #6a6767;
+    border-radius: 10px;
+}
