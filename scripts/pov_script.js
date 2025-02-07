@@ -10,7 +10,19 @@ async function onload() {
     const total = document.getElementById("total-povs");
     total.innerText = total.innerText.replace("{povs}", Object.keys(entries.content).length);
     populate_povs();
-    populate_filters();
+    await populate_filters();
+
+    const search = new URLSearchParams(window.location.search);
+    const terms = ["player", "hero", "region", "stakes", "team", "enemy", "tourn", "maps"]
+    for (let term of terms) {
+        const a = search.get(term);
+        if (a != null) {
+            const t = a.replace("_", " ");
+            const b = document.getElementById(term + "select");
+            b.value = t;
+            hide_miscreants({target: b});
+        }
+    }
 }
 
 async function get_povs() {
@@ -34,50 +46,50 @@ async function populate_filters() {
     Object.keys(entries.filters.player).sort().forEach(function(k,v) {
         addthings(k, v, player_dropdown, entries.filters.player, "player");
     })
-    player_dropdown.onchange = function(e){hide_miscreants(e);}
+    player_dropdown.onchange = function(e){filterclick(e);}
 
 
     hero_dropdown = document.getElementById("heroselect");
     Object.keys(entries.filters.heroes).sort().forEach(function(k, v) {
         addthings(k, v, hero_dropdown, entries.filters.heroes, "hero");
     })
-    hero_dropdown.onchange = function(e){hide_miscreants(e);}
+    hero_dropdown.onchange = function(e){filterclick(e);}
 
     region_dropdown = document.getElementById("regionselect");
     Object.keys(entries.filters.region).sort().forEach(function(k, v) {
         addthings(k, v, region_dropdown, entries.filters.region, "region");
     })
-    region_dropdown.onchange = function(e){hide_miscreants(e);}
+    region_dropdown.onchange = function(e){filterclick(e);}
 
     stakes_dropdown = document.getElementById("stakesselect");
     Object.keys(entries.filters.stakes).sort().forEach(function(k, v) {
         addthings(k, v, stakes_dropdown, entries.filters.stakes, "stakes");
     })
-    stakes_dropdown.onchange = function(e){hide_miscreants(e);}
+    stakes_dropdown.onchange = function(e){filterclick(e);}
 
     team_dropdown = document.getElementById("teamselect");
     Object.keys(entries.filters.team).sort().forEach(function(k, v) {
         addthings(k, v, team_dropdown, entries.filters.team, "team");
     })
-    team_dropdown.onchange = function(e){hide_miscreants(e);}
+    team_dropdown.onchange = function(e){filterclick(e);}
 
     enemy_dropdown = document.getElementById("enemyselect");
     Object.keys(entries.filters.enemy).sort().forEach(function(k, v) {
         addthings(k, v, enemy_dropdown, entries.filters.enemy, "enemy");
     })
-    enemy_dropdown.onchange = function(e){hide_miscreants(e);}
+    enemy_dropdown.onchange = function(e){filterclick(e);}
 
     tourn_dropdown = document.getElementById("tournselect");
     Object.keys(entries.filters.tournament).sort().forEach(function(k, v) {
         addthings(k, v, tourn_dropdown, entries.filters.tournament, "tourn");
     })
-    tourn_dropdown.onchange = function(e){hide_miscreants(e);}
+    tourn_dropdown.onchange = function(e){filterclick(e);}
 
     maps_dropdown = document.getElementById("mapsselect");
     Object.keys(entries.filters.maps).sort().forEach(function(k, v) {
         addthings(k, v, maps_dropdown, entries.filters.maps, "maps");
     })
-    maps_dropdown.onchange = function(e){hide_miscreants(e);}
+    maps_dropdown.onchange = function(e){filterclick(e);}
 }
 
 async function populate_povs() {
@@ -100,6 +112,10 @@ function get_allowed_videos() {
     let x = player.concat(hero).concat(region).concat(stakes).concat(team).concat(enemy).concat(tourn).concat(maps);
 
     return get_max_occurances(x, 8);
+}
+
+async function filterclick(event) {  
+    hide_miscreants(event);
 }
 
 async function hide_miscreants(event) {
@@ -246,6 +262,25 @@ function apiRequest(url) {
 		}
 		request.send();
 	});
+}
+
+async function copyFilterUrl() {
+    let url = "https://groogle.zip/povs"
+    const terms = ["player", "hero", "region", "stakes", "team", "enemy", "tourn", "maps"]
+    let first = true;
+    for (let term of terms) {
+        const fi = document.getElementById(term + "select").value.replace(" ", "_");
+        if (fi != "ALL" && fi != "_") {
+            if (first) {
+                url += "?" + term + "=" + fi;
+                first = false;
+            } else {
+                url += "&" + term + "=" + fi;
+            }
+        }
+    }
+    console.log(url);
+    navigator.clipboard.writeText(url);
 }
 
 const hero_icons = {"Hazard":"https://d15f34w2p8l1cc.cloudfront.net/overwatch/612ae1e6d28125bd4d4d18c2c4e5b004936c094556239ed24a1c0a806410a020.png",
