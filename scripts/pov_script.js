@@ -233,7 +233,7 @@ async function add_video(id, video) {
     inner += "</div><br><div class='mapcontainer'>"
 
     for (let hero in Object.keys(video.maps)) {
-        inner += "<div class='mapholder'><div class='maptext'><a>" + video.maps[hero] + "</a></div><div class='mapcard'></div></div>"
+        inner += "<div class='mapholder'><div class='maptext'><a  href='https://youtu.be/" + video.id + "&t=" + video.maptimes[video.maps[hero]] + "'>" + video.maps[hero] + "</a></div><div class='mapcard'></div></div>"
     }
 
     inner += "</div></div><div class='resultbackground'></div></div>";
