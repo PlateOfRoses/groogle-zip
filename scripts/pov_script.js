@@ -30,6 +30,8 @@ async function onload() {
             console.log(n.id.toLowerCase().includes(e.currentTarget.value.toLowerCase()));
             if (!n.id.toLowerCase().includes(e.currentTarget.value.toLowerCase())) {
                 n.style.display = 'none';
+            } else {
+                n.style.display = 'block';
             }
         })
     })
