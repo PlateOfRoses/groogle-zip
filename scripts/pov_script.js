@@ -23,6 +23,16 @@ async function onload() {
             hide_miscreants({target: b});
         }
     }
+
+    document.getElementById("playersearch").addEventListener("change", (e) => {
+        console.log(e.currentTarget.value.toLowerCase());
+        document.getElementById("playerselect").childNodes.forEach(n => {
+            console.log(n.id.toLowerCase().includes(e.currentTarget.value.toLowerCase()));
+            if (!n.id.toLowerCase().includes(e.currentTarget.value.toLowerCase())) {
+                n.style.display = 'none';
+            }
+        })
+    })
 }
 
 async function get_povs() {
