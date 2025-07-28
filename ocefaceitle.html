@@ -72,7 +72,15 @@
             justify-content: center;
             margin-right: 10px;
         }
-        
+        .copybutton {
+            background-color: rgb(190, 124, 1);
+            font-size: large;
+            border: none;
+            height: 50px;
+        }
+        .copybutton:hover {
+            background-color: rgb(207, 135, 0);
+        }
     </style>
 </head>
 <body>
@@ -91,16 +99,20 @@
             <div class="guess unanswered" ><div class="name" ></div><div class="role smallinput" ></div><div class="team smallinput" ></div></div>
             <div class="guess unanswered" ><div class="name" ></div><div class="role smallinput" ></div><div class="team smallinput" ></div></div>
             <div class="guess unanswered" ><div class="name" ></div><div class="role smallinput" ></div><div class="team smallinput" ></div></div>
-      </div>
-      <div style="width:490px; background-color: #2f2f2f; border-radius: 15px; font-size: large; border: 1px solid #4f4f4f; overflow: hidden; padding: 10px 0 10px;">
-        <div style="align-items: center; justify-content: left; display: flex;">
-            <input type="text" id="search" placeholder="Search for a player" style="background-color: inherit; border: none; height: 35px; padding: 0; width: 400px; margin: 0 0 0 20px">
-            <button class="fancybutton" onclick="submitGuess(event)">Guess</button>
+            <div class="guess unanswered" ><div class="name" ></div><div class="role smallinput" ></div><div class="team smallinput" ></div></div>
         </div>
-        <div class="dropdown" id="dropdown">
-
-        </div>
-      </div>
+        <div id="iholdstuff" style="width:490px; background-color: #2f2f2f; border-radius: 15px; font-size: large; border: 1px solid #4f4f4f; overflow: hidden; padding: 10px 0 10px;">
+            <div style="align-items: center; justify-content: left; display: flex;">
+                <input type="text" id="search" placeholder="Search for a player" style="background-color: inherit; border: none; height: 35px; padding: 0; width: 400px; margin: 0 0 0 20px">
+                <button class="fancybutton" onclick="submitGuess(event)">Guess</button>
+            </div>
+        <div class="dropdown" id="dropdown"></div>
+    </div>
+    <div id="completion" style="background-color: #4f4f4f; text-align: center; padding: 10px; border-radius: 8px; display: none;">
+        <h1 id="result"></h1>
+        <p>The correct answer was: <code id="player_name">PLAYER_NAME</code></p>
+        <p>reset at midnight local time</p>
+        <button class="copybutton" onclick="copyresults()">Copy Results to Clipboard</button>
     </div>
 </body>
 
@@ -133,7 +145,7 @@
         return random
     }
 
-    const picks = {"Aerial":{"team":"Onions On Sale","role":"support"},"Alimo":{"team":"Onions On Sale","role":"tank"},"Arc":{"team":"Pepeino Rodrigo","role":"damage"},"Beeple":{"team":"Untersirables","role":"support"},"BiscuitBoy":{"team":"Untersirables","role":"tank"},"Bread":{"team":"Crazy Cats","role":"tank"},"Bunny":{"team":"Supernova","role":"damage"},"Chappadoodle":{"team":"Supernova","role":"tank"},"Constantine":{"team":"Crazy Cats","role":"damage"},"DML":{"team":"FURY","role":"damage"},"Diego":{"team":"Paris","role":"damage"},"Diorite":{"team":"The Minerals","role":"support"},"Dizzly":{"team":"Pepeino Rodrigo","role":"damage"},"Estreichh":{"team":"FURY","role":"tank"},"Exrai":{"team":"FURY","role":"support"},"Final":{"team":"Onions On Sale","role":"support"},"Fovai":{"team":"Untersirables","role":"support"},"FrostyCookie":{"team":"The Minerals","role":"tank"},"GP2Engine":{"team":"Untersirables","role":"support"},"HeyHello":{"team":"Team Excel","role":"support"},"Huntin":{"team":"The Bakery","role":"support"},"Kaistro":{"team":"Team Excel","role":"support"},"LegoEater":{"team":"The Minerals","role":"damage"},"Lex":{"team":"Paris","role":"damage"},"LiamFox":{"team":"Supernova","role":"support"},"Luke":{"team":"Paris","role":"support"},"Muttnik":{"team":"Supernova","role":"support"},"PKFishy":{"team":"The Bakery","role":"damage"},"PlateOfSuki":{"team":"Untersirables","role":"damage"},"Pugz":{"team":"The Bakery","role":"support"},"RayCenat":{"team":"Team Excel","role":"damage"},"Regr3T":{"team":"The Bakery","role":"damage"},"Reo":{"team":"Pepeino Rodrigo","role":"tank"},"RottenWaltz":{"team":"The Minerals","role":"support"},"S1zzle":{"team":"The Minerals","role":"damage"},"Scorch":{"team":"The Bakery","role":"tank"},"Seatonnes":{"team":"Untersirables","role":"support"},"SlidzorJ":{"team":"Supernova","role":"damage"},"Smashy":{"team":"Onions On Sale","role":"damage"},"TLK":{"team":"Crazy Cats","role":"damage"},"Trick":{"team":"Pepeino Rodrigo","role":"support"},"Tropica":{"team":"AstronicEsports","role":"support"},"Zoe":{"team":"Paris","role":"tank"},"eattree":{"team":"Team Excel","role":"tank"},"hamster":{"team":"FURY","role":"damage"},"hewwo":{"team":"Crazy Cats","role":"support"},"kawhi":{"team":"Untersirables","role":"damage"},"lain":{"team":"Onions On Sale","role":"damage"},"luckyduck1":{"team":"Team Excel","role":"damage"},"markER":{"team":"Pepeino Rodrigo","role":"support"},"nuclear":{"team":"Untersirables","role":"tank"},"shkyp":{"team":"FURY","role":"tank"},"swaqqyy":{"team":"Untersirables","role":"tank"},"vanityrose":{"team":"Crazy Cats","role":"support"},"yeoxnw00":{"team":"Paris","role":"support"}};
+    const picks = {"AUTUMN_ow":{"team":"Paris","role":"tank"},"Aerial":{"team":"Onions On Sale","role":"support"},"Alimo":{"team":"Onions On Sale","role":"tank"},"Arc":{"team":"Pepeino Rodrigo","role":"damage"},"Beeple":{"team":"Untersirables","role":"support"},"BiscuitBoy":{"team":"Untersirables","role":"tank"},"Bread":{"team":"Crazy Cats","role":"tank"},"BreadTurtle_":{"team":"The Bakery","role":"support"},"Bunny":{"team":"Supernova","role":"damage"},"Chappadoodle":{"team":"Supernova","role":"tank"},"Constantine":{"team":"Crazy Cats","role":"damage"},"DML":{"team":"FURY","role":"damage"},"Diego":{"team":"Paris","role":"damage"},"Diorite":{"team":"The Minerals","role":"support"},"Dizzly":{"team":"Pepeino Rodrigo","role":"damage"},"Estreichh":{"team":"FURY","role":"tank"},"Exrai":{"team":"FURY","role":"support"},"Final":{"team":"Onions On Sale","role":"support"},"Fovai":{"team":"Untersirables","role":"support"},"FrostyCookie":{"team":"The Minerals","role":"tank"},"GP2Engine":{"team":"Untersirables","role":"support"},"HeyHello":{"team":"Team Excel","role":"support"},"Huntin":{"team":"The Bakery","role":"support"},"Kaistro":{"team":"Team Excel","role":"support"},"LegoEater":{"team":"The Minerals","role":"damage"},"Lex":{"team":"Paris","role":"damage"},"LiamFox":{"team":"Supernova","role":"support"},"Luke":{"team":"Paris","role":"support"},"Maltma":{"team":"FURY","role":"support"},"Muttnik":{"team":"Supernova","role":"support"},"PKFishy":{"team":"The Bakery","role":"damage"},"Pattoww":{"team":"The Minerals","role":"support"},"PlateOfSuki":{"team":"Untersirables","role":"damage"},"Pugz":{"team":"The Bakery","role":"support"},"RayCenat":{"team":"Team Excel","role":"damage"},"RedChicken81":{"team":"FURY","role":"tank"},"Regr3T":{"team":"The Bakery","role":"damage"},"Reo":{"team":"Pepeino Rodrigo","role":"tank"},"RottenWaltz":{"team":"The Minerals","role":"support"},"S1zzle":{"team":"The Minerals","role":"damage"},"Scorch":{"team":"The Bakery","role":"tank"},"Seatonnes":{"team":"Untersirables","role":"support"},"SlidzorJ":{"team":"Supernova","role":"damage"},"Smashy":{"team":"Onions On Sale","role":"damage"},"TLK":{"team":"Crazy Cats","role":"damage"},"TSML9DOMO":{"team":"Onions On Sale","role":"damage"},"Trick":{"team":"Pepeino Rodrigo","role":"support"},"Tropica":{"team":"AstronicEsports","role":"support"},"WhiteHammer8":{"team":"Paris","role":"support"},"Zoe":{"team":"Paris","role":"tank"},"_Al3c":{"team":"The Minerals","role":"tank"},"_Cas3y_":{"team":"Pepeino Rodrigo","role":"damage"},"eattree":{"team":"Team Excel","role":"tank"},"fun748593746":{"team":"Team Excel","role":"damage"},"hamster":{"team":"FURY","role":"support"},"hewwo":{"team":"Crazy Cats","role":"support"},"ikari2k":{"team":"FURY","role":"damage"},"kawhi":{"team":"Untersirables","role":"damage"},"lain":{"team":"Onions On Sale","role":"damage"},"lilgooba":{"team":"FURY","role":"damage"},"luckyduck1":{"team":"Team Excel","role":"damage"},"markER":{"team":"Pepeino Rodrigo","role":"support"},"nuclear":{"team":"Untersirables","role":"tank"},"shkyp":{"team":"FURY","role":"damage"},"smaxow":{"team":"The Minerals","role":"support"},"sno6":{"team":"Pepeino Rodrigo","role":"damage"},"suna233":{"team":"Paris","role":"tank"},"swaqqyy":{"team":"Untersirables","role":"tank"},"vanityrose":{"team":"Crazy Cats","role":"support"},"yeoxnw00":{"team":"Paris","role":"support"},"ytb_":{"team":"Onions On Sale","role":"support"}}
     const keys = Object.keys(picks);
     const keys_lower = new Array();
     for (i of keys) {
@@ -182,7 +194,7 @@
         const value = search_bar.value.toLowerCase();
         const guesses_left = document.getElementsByClassName("unanswered");
         const guess_keys = Object.keys(guesses_left);
-        if (keys_lower.includes(value) && !guessed.includes(value) && guess_keys.length > 0 && lastguess != player) {
+        if (keys_lower.includes(value) && !guessed.includes(value) && guess_keys.length > 0 && !lastguess) {
             console.log(search_bar.value);
             guessed.push(value);
             const player_name = keys[keys_lower.indexOf(value)];
@@ -192,11 +204,32 @@
             guesses_left[0].childNodes[1].classList.add((picks[player_name].role == picks[player].role ? "correct" : "incorrect"))
             guesses_left[0].childNodes[2].innerText = picks[player_name].team;
             guesses_left[0].childNodes[2].classList.add((picks[player_name].team == picks[player].team ? "correct" : "incorrect"))
+            guesses_left[0].classList.add("answered");
             guesses_left[0].classList.remove("unanswered");
-            lastguess = player_name;
-        } else {
-            search_bar.classList.add("wrong");
+            lastguess = (player_name == player);
+            search_bar.value = "";
+            inputHandler(event);
         }
+        if (guesses_left.length == 0) {
+            document.getElementById("iholdstuff").style.display = "none";
+            document.getElementById("completion").style.display = "block";
+            document.getElementById("result").innerText = (lastguess ? "You Won!" : "You Lost...");
+            document.getElementById("player_name").innerText = player;
+
+        }
+        
+    }
+
+    function copyresults() {
+        let copied_string = "OCE MASTERS FACEITLE " + date.getDate() + "-" + date.getMonth() + " " + (lastguess ? "✔️" : "❌") + "\n";
+        const guesses = document.getElementsByClassName("answered");
+        for (let i of guesses) {
+            copied_string += (i.childNodes[0].classList.contains("correct") ? "🟩" : "🟥");
+            copied_string += (i.childNodes[1].classList.contains("correct") ? "🟩" : "🟥");
+            copied_string += (i.childNodes[2].classList.contains("correct") ? "🟩" : "🟥") + "\n";
+        }
+        copied_string += "<https://groogle.zip/ocefaceitle>";
+        navigator.clipboard.writeText(copied_string);
     }
 
 
