@@ -210,7 +210,7 @@
             search_bar.value = "";
             inputHandler(event);
         }
-        if (guesses_left.length == 0) {
+        if (guesses_left.length == 0 || lastguess) {
             document.getElementById("iholdstuff").style.display = "none";
             document.getElementById("completion").style.display = "block";
             document.getElementById("result").innerText = (lastguess ? "You Won!" : "You Lost...");
