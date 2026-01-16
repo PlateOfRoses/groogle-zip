@@ -221,7 +221,7 @@
     }
 
     function copyresults() {
-        let copied_string = "OCE MASTERS FACEITLE " + date.getDate() + "-" + date.getMonth() + " " + (lastguess ? "✔️" : "❌") + "\n";
+        let copied_string = "OCE MASTERS FACEITLE " + date.getDate() + "-" + (date.getMonth() + 1) + " " + (lastguess ? "✔️" : "❌") + "\n";
         const guesses = document.getElementsByClassName("answered");
         for (let i of guesses) {
             copied_string += (i.childNodes[0].classList.contains("correct") ? "🟩" : "🟥");

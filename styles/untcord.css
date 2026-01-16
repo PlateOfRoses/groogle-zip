@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: #30333a;
+    font-family: arial,sans-serif;
+    scrollbar-width: 0px;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
