@@ -1,0 +1,52 @@
+.youtube {
+    background-color: black;
+    overflow-y: scroll;
+    color: white;
+    height: 90vh;
+    width: 800px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.video_valid {
+    border: 1px solid green;
+}
+
+.video_invalid {
+    border: 1px solid red;
+}
+
+.heroAliasBox {
+    width: 150px;
+    height: 750px;
+    background-color: rgb(49, 49, 49);
+    margin: 75px 0 0 75px;
+    overflow-y: scroll;
+    color: white;
+}
+
+.main_box {
+    display: flex;
+    flex-direction: row;
+}
+
+.heroAliasBox ul {
+    padding: 0;
+}
+
+.heroAliasBox li {
+    padding-left: 15px;
+}
+
+.heroAliases:nth-of-type(odd)  {
+    background-color: rgb(97, 88, 88);
+}
+
+.addHeroDiv {
+
+}
+
+.mainContent {
+    user-select: text;
+}

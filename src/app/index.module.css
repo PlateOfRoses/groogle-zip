@@ -1,0 +1,176 @@
+.creator {
+    font-size: 20px;
+}
+
+.card {
+    height: 400px;
+    width: 350px;
+    margin: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+#cards {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    left: 0;
+    overflow-x: scroll;
+    max-width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#cards::-webkit-scrollbar {
+    display: none;
+}
+
+.title {
+    color: white;
+    opacity: 200;
+    padding-top: calc(50% - 10px);
+    font-size: 40px;
+    pointer-events: none;
+    z-index: 1;
+    animation: 1s anim-reverse ease-out forwards;
+}
+
+.card:hover .title {
+    display: block;
+    animation: 1s anim-lineUp ease-out forwards;
+}
+
+@keyframes anim-lineUp {
+    0% {
+        transform: translateY(0%);
+    }
+    25% {
+        transform: translateY(-55%);
+        font-size: 50px;
+    }
+    100% {
+        transform: translateY(-55%);
+        font-size: 50px;
+    }
+}
+
+@keyframes anim-reverse {
+    0% {
+        transform: translateY(-55%);
+        font-size: 50px;
+    }
+    50% {
+        transform: translateY(0%);
+        font-size: 40px;
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.content {
+    color: white;
+    font-size: 30px;
+    padding: 0 30px 0 30px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    animation: 0.75s anim-revcont ease-out forwards;
+}
+
+.card:hover .content {
+    animation: 1s anim-content ease-out forwards;
+}
+
+/*noinspection ALL*/
+@keyframes anim-content {
+    20% {
+        opacity: 0;
+        translate: translateX( -30% );
+    }
+    60% {
+        opacity: 1;
+        translate: translateX(0%)
+    }
+    100% {
+        opacity: 1;
+        translate: translateX(0%);
+    }
+}
+
+@keyframes anim-revcont {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#unknown {
+    scale: 0.5;
+    position: absolute;
+    opacity: 0.4;
+    background-color: black;
+    top: -300px;
+    left: -830px;
+    z-index: 0;
+}
+
+#twab {
+    scale: 0.5;
+    position: absolute;
+    opacity: 0.4;
+    background-color: black;
+    top: -300px;
+    left: -900px;
+    z-index: 0;
+}
+
+#owcs {
+    scale: 0.28;
+    position: absolute;
+    opacity: 0.4;
+    background-color: black;
+    top: -525px;
+    left: -1100px;
+    z-index: 0;
+}
+
+.wipcard {
+    height: 400px;
+    width: 350px;
+    margin: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+    overflow: hidden;
+    position: relative;
+}
+
+.wipcard:hover .content {
+    animation: 1s anim-content forwards;
+}
+
+.wipcard:hover .title {
+    display: block;
+    animation: 1s anim-lineUp ease-out forwards;
+}
+
+.wipcard:hover .content {
+    animation: 1s anim-content forwards;
+}
+
