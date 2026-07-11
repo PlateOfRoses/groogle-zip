@@ -3,6 +3,7 @@ import { Archivo_Black} from "next/font/google";
 import OceHeader from "@/app/(frontend)/ocetv/UI/header";
 import Results from "@/app/(frontend)/ocetv/UI/ResultsList";
 
+const fs = require('fs');
 
 export const metadata = {
     title: "OCE Overwatch TV",
@@ -25,4 +26,64 @@ export default function Page() {
             <Results />
         </div>
     </main>
+}
+
+
+async function hi() {
+    'use server';
+    const masters = [["9b2439d9-bb2d-4b37-8f7a-22747abcd1bf"],
+        ["95b02d9f-2208-4c5b-a0b8-9dac6c38f4a1"],
+        ["166e5afb-de24-4c77-9492-9b535bf300bd"],
+        ["935f72b2-433d-4fc9-8aa3-a28bc4302aa9"],
+        ["679cd985-2511-4601-95ae-d444b170d5ed"],
+        ["c6eb2058-8613-4523-8c3c-80ddd21c972b"],
+        ["19cb3f23-63c2-4f0e-9d0e-807ee7a84634"],
+        ["a1daec5e-427c-425b-83d4-401202b579de"],
+        ["cf45d5c3-9f98-4dc7-94f0-158220765e60"],
+        ["09461caf-18c2-4bc8-9edd-1ccb0021ade7"],
+        ["b378bcc3-f197-49ee-86bc-03783feb1310"],
+        ["352c7295-69fa-4580-8358-b27244b326f8"],
+        ["b8f2f22c-a61d-4245-8e60-2d5feef36a03"],
+        ["d474fa49-2a8a-4518-acb2-94aed5352226"],
+        ["71b0306a-f9b1-4696-8511-ce07140ea4f3"],
+        ["acf67962-a1c8-4012-bb55-1085c3d7f88b"],
+    ]
+
+    for (let entry of masters) {
+        let url = `https://open.faceit.com/data/v4/teams/${entry[0]}`;
+        console.log(url);
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${process.env.FACEIT_API_KEY}`,
+                'Accept': 'application/json',
+            },
+        });
+        const data = await response.json();
+        const team_players = [data.leader];
+        for (let player of data.members) {
+            if (!team_players.includes(player.user_id) && player.memberships) {
+                team_players.push(player.user_id);
+            }
+        }
+        const team = {
+            team_id: data.team_id,
+            competed_seasons: [9],
+            seasons: {
+                9: {
+                    division: "OPENS",
+                    team_name: data.name,
+                    team_tag: data.nickname,
+                    team_image: data.avatar,
+                    players: team_players,
+                    matches: []
+                }
+            }
+        }
+
+        const teams = JSON.parse(fs.readFileSync('./src/app/lib/faceit_teams.json', { encoding: 'utf8', flag: 'r' }));
+        teams[data.team_id] = team;
+        fs.writeFileSync('./src/app/lib/faceit_teams.json', JSON.stringify(teams));
+    }
+
 }

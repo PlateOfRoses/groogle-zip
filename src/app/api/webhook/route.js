@@ -7,10 +7,10 @@ export async function POST(request) {
     const data = await request.json();
 
     const payload = data.payload;
+    console.log(data);
     if (!payload.entity.name.includes('OCE')) {
         return new Response({status: 200});
     }
-    console.log(data);
 
     let embed = {
         "title": "X",
@@ -18,6 +18,7 @@ export async function POST(request) {
         "description": `[${payload.teams[0].name} vs ${payload.teams[1].name}](https://www.faceit.com/en/ow2/room/${payload.id})`,
         "color": 111111,
     }
+    console.log(payload);
     switch (data.event) {
         case "match_status_cancelled":
             embed.title = "CANCELLED";
@@ -42,7 +43,7 @@ export async function POST(request) {
             new Response({status: 200});
     }
 
-    console.log("Created embed, sending to webhook");
+
 
     const url = `https://discord.com/api/webhooks/${process.env.DISC_WEBHOOK}`;
 
