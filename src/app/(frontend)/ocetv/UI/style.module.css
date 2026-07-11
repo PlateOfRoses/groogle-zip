@@ -1,0 +1,146 @@
+.header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    width: 80vw;
+    height: 7.5vh;
+    background-color: #181e2f;
+    color: #ffffff;
+    padding: 0 10vw 0 10vw !important;
+    border-bottom: 1px solid #000000;
+}
+
+.header div {
+    display: flex;
+    margin: auto 5px auto 5px;
+    height: 100%;
+    font-size: 30px;
+    align-items: center;
+    text-align: right;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.header a {
+    display: flex;
+    height: 100%;
+    padding: 0 10px 0 10px;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+
+.header a:before {
+    content: "";
+    background-color: #ffffff;
+    width: calc(100% + 20px);
+    bottom: 0;
+    height: 10px;
+    border-radius: 4px 4px 0 0;
+}
+
+.header p {
+    margin: 0;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.header div:first-of-type {
+    font-size: 45px;
+    width: 45%;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+.header a:hover {
+    background-color: #242b3f;
+}
+
+.leftSidebar {
+    position: relative;
+    border: 3px solid #c2c2c2;
+    width: 275px;
+    min-width: 275px;
+    height: 85vh;
+    margin: 10px 20px;
+    border-radius: 4px;
+    background-color: #272d3f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game {
+    display: flex;
+    width: 95%;
+    height: 75px;
+    border: 3px solid #c2c2c2;
+    border-radius: 4px;
+    margin: 3px;
+    color: white;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    margin: 3px 0 0 3px;
+    text-align: center;
+    align-items: center;
+}
+
+.game img {
+    width: 50px;
+}
+
+.mastersLine {
+    width: 0px;
+    margin: 5px;
+    border: 2px solid #ea2e31;
+    border-radius: 3px;
+}
+
+.teamTwo {
+    display: flex;
+    flex-direction: column;
+    margin: 3px 3px 0 0;
+    text-align: center;
+    align-items: center;
+}
+
+.matchTicker {
+    width: 100%;
+    margin: 0 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scores {
+    font-size: 30pt;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: -10px 0 0 0;
+}
+
+.matchTicker .scores div {
+    flex-grow: 1;
+    margin: 0 6px;
+}
+
+.matchTicker .scores div:nth-of-type(2) {
+    flex-grow: 1;
+    text-align: right;
+}
+
+.matchDate {
+    font-size: 10pt;
+}
+
+.mapsNeeded {
+    font-size: 10pt;
+    margin: -5px 0 0 0;
+    color: #d5d5d5;
+}

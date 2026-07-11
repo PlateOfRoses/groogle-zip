@@ -1,0 +1,21 @@
+.background {
+    width: 78vw;
+    height: 100vh;
+    margin-top: 7.5vh;
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    margin: 0;
+    background-color: #12151e;
+}
+
+.mainContent {
+    display: flex;
+    width: 100%;
+    border: 3px solid #c2c2c2;
+    background-color: #272d3f;
+    margin: 10px 0px;
+    border-radius: 4px;
+}

@@ -1,4 +1,4 @@
-import styles from './twab.module.css'
+import styles from './style.module.css'
 
 export const metadata = {
     title: "POVS",

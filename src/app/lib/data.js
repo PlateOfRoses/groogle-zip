@@ -1,3 +1,6 @@
-import { postgres } from 'postgres';
+import {cache} from "react";
+import { db } from "./db";
 
-const sql = postgres(process.env.POSTGRES_URL, { ssl: 'require' });
+export const getHeroAlias = cache(async (id) => {
+    const heroes = await db.query.heroes.alias()
+})

@@ -1,4 +1,5 @@
 import styles from './twab.module.css'
+import Link from "next/link";
 
 export const metadata = {
     title: "TWAB Search",
@@ -11,7 +12,7 @@ export default function Page() {
                 <a id="total-twabs">Twabs Loaded: {1}</a>
                 <a> | </a>
                 <a id="recent" style={{alignItems: "end"}}>Recent: {1}</a>
-                <a className="home" href="/">Home</a>
+                <Link className="home" href={"/"}>Home</Link>
             </div>
 
             <div className="groogle-text" >
@@ -20,9 +21,13 @@ export default function Page() {
 
             <div className={styles.searchbox}>
                 <div className={styles.searchbar}>
-                    <img id={styles.searchsymbol} src="/Search.svg" onClick={load_search()}/>
+                    <img id={styles.searchsymbol} src="/Search.svg" onClick={load_search()} alt={"Search Icon"}/>
                     <input id={styles.search} autoComplete="off"/>
                 </div>
+            </div>
+
+            <div className={styles.resultscontainer}>
+
             </div>
         </main>
 }
