@@ -5,7 +5,7 @@ const fs = require('fs');
 
 
 export default function Results() {
-    const completed_games = JSON.parse(fs.readFileSync('./src/app/lib/faceit_games.json', { encoding: 'utf8', flag: 'r' })).completed;
+    const completed_games = JSON.parse(fs.readFileSync('./src/app/lib/faceit_games.json', { encoding: 'utf8', flag: 'r' })).opens.completed;
 
     const lst = []
     for (const match of completed_games) {
