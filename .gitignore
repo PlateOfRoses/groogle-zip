@@ -48,3 +48,8 @@ next-env.d.ts
 
 /src/app/api/mysql/
 
+
+# amplify
+.amplify
+amplify_outputs*
+amplifyconfiguration*
