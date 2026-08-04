@@ -1,0 +1,16 @@
+{
+  "opens": {
+    "upcoming_count": 0,
+    "upcoming": [],
+    "completed_count": 0,
+    "completed": []
+  },
+  "masters": {
+    "upcoming_count": 0,
+    "upcoming": [],
+    "completed_count": 0,
+    "completed": []
+  },
+  "games": []
+
+}

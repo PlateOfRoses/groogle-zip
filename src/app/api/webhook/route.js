@@ -40,7 +40,7 @@ export async function POST(request) {
             embed.title = "STARTING";
             break;
         default:
-            new Response({status: 200});
+            return new Response({status: 200});
     }
 
 

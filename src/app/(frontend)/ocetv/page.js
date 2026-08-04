@@ -31,6 +31,8 @@ export default function Page() {
 
 async function hi() {
     'use server';
+
+    /*
     const masters = [["9b2439d9-bb2d-4b37-8f7a-22747abcd1bf"],
         ["95b02d9f-2208-4c5b-a0b8-9dac6c38f4a1"],
         ["166e5afb-de24-4c77-9492-9b535bf300bd"],
@@ -84,6 +86,10 @@ async function hi() {
         const teams = JSON.parse(fs.readFileSync('./src/app/lib/faceit_teams.json', { encoding: 'utf8', flag: 'r' }));
         teams[data.team_id] = team;
         fs.writeFileSync('./src/app/lib/faceit_teams.json', JSON.stringify(teams));
+
+        // https://open.faceit.com/data/v4/matches/{match_id}
+        // https://open.faceit.com/data/v4/championships/3188eac0-79b6-4933-8735-d67ea6e94dd5/matches <- Masters Season 9
     }
+     */
 
 }
