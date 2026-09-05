@@ -37,6 +37,18 @@ async function onload() {
     })
 }
 
+async function resetFilters() {
+    const terms = ["player", "hero", "region", "stakes", "team", "enemy", "tourn", "maps"]
+    for (let term of terms) {
+        const b = document.getElementById(term + "select");
+        console.log(b);
+        console.log(b.value)
+        b.value = (term + "_ ");
+        console.log((term + "_ "))
+        hide_miscreants({ target: b });
+    }
+}
+
 async function get_povs() {
 	const url = "https://raw.githubusercontent.com/PlateOfSuki/OWCSPlayerPOVS/refs/heads/main/data.json";
 	await apiRequest(url).then(function(response) {
@@ -302,6 +314,7 @@ const hero_icons = {"Hazard":"https://d15f34w2p8l1cc.cloudfront.net/overwatch/61
                     "Bastion":"https://d15f34w2p8l1cc.cloudfront.net/overwatch/4d715f722c42215072b5dd0240904aaed7b5285df0b2b082d0a7f1865b5ea992.png",
                     "Brigitte":"https://d15f34w2p8l1cc.cloudfront.net/overwatch/48392820c6976ee1cd8dde13e71df85bf15560083ee5c8658fe7c298095d619a.png",
                     "Cassidy":"https://d15f34w2p8l1cc.cloudfront.net/overwatch/6cfb48b5597b657c2eafb1277dc5eef4a07eae90c265fcd37ed798189619f0a5.png",
+                    "Dmon": "https://d15f34w2p8l1cc.cloudfront.net/overwatch/a46c60b8562fdbd0b8308396d0808f7606fba208bc67cccf3f82fe56d2c73b9d.png",
                     "D.va":"https://d15f34w2p8l1cc.cloudfront.net/overwatch/ca114f72193e4d58a85c087e9409242f1a31e808cf4058678b8cbf767c2a9a0a.png",
                     "Doomfist":"https://d15f34w2p8l1cc.cloudfront.net/overwatch/13750471c693c1a360eb19d5ace229c8599a729cd961d72ebee0e157657b7d18.png",
                     "Echo":"https://d15f34w2p8l1cc.cloudfront.net/overwatch/f086bf235cc6b7f138609594218a8385c8e5f6405a39eceb0deb9afb429619fe.png",
